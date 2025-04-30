@@ -1,0 +1,760 @@
+/* General Layout */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f4f7fa;
+  color: #222;
+}
+
+body, .modern-app-container {
+  font-family: 'Inter', 'Roboto', 'Open Sans', Arial, sans-serif;
+  background: linear-gradient(120deg, #1e3c72 0%, #2a5298 50%, #ff6e7f 100%);
+  background-size: 200% 200%;
+  animation: gradientMove 10s ease-in-out infinite;
+  min-height: 100vh;
+  color: #222;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.modern-app-container {
+  min-height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 8px 32px 8px;
+}
+
+/* NASA-style header and panel polish */
+.modern-header {
+  background: linear-gradient(90deg, #0b1e3f 0%, #1a3a6b 100%);
+  color: #fff;
+  border-radius: 0 0 24px 24px;
+  box-shadow: 0 4px 24px rgba(44,62,80,0.18);
+  padding-bottom: 32px;
+  position: relative;
+  z-index: 1;
+}
+.modern-header h1 {
+  color: #fff;
+  letter-spacing: 1.5px;
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  font-weight: 700;
+  text-shadow: 0 2px 8px #0003;
+}
+.modern-header .subtitle {
+  color: #b3c6e0;
+  font-size: 1.15rem;
+  margin-bottom: 0;
+}
+
+.modern-header.nasa-app-bar {
+  display: flex;
+  align-items: center;
+  background: #1a237e;
+  color: #fff;
+  padding: 18px 32px;
+  box-shadow: 0 2px 8px rgba(30,40,90,0.08);
+}
+.nasa-logo {
+  height: 48px;
+  margin-right: 18px;
+}
+.nasa-title {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.modern-main-grid {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+  padding: 32px 32px 0 32px;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* --- NASA-inspired color palette --- */
+:root {
+  --nasa-blue: #0b3d91;
+  --nasa-light-blue: #1976d2;
+  --nasa-red: #fc3d21;
+  --nasa-white: #fff;
+  --nasa-gray: #e3e7fa;
+  --nasa-dark: #23294a;
+}
+
+/* Card polish */
+.modern-card {
+  background: var(--nasa-gray);
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(11,61,145,0.10);
+  color: var(--nasa-dark);
+  padding: 28px 28px 20px 28px;
+  margin-bottom: 0;
+  transition: box-shadow 0.3s, transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+.modern-card:not(:last-child) {
+  margin-bottom: 24px;
+}
+
+.modern-card:hover {
+  box-shadow: 0 16px 48px 0 rgba(31,38,135,0.28);
+  transform: scale(1.025);
+}
+
+.modern-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+/* Button polish */
+.modern-btn, .add-btn {
+  background: var(--nasa-blue);
+  color: var(--nasa-white);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 26px;
+  font-size: 1.08rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(11,61,145,0.10);
+  transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+}
+.modern-btn:hover, .add-btn:hover {
+  background: var(--nasa-red);
+  color: var(--nasa-white);
+  box-shadow: 0 4px 16px rgba(252,61,33,0.18);
+  transform: scale(1.06);
+}
+.modern-btn:active {
+  transform: scale(0.97);
+}
+
+/* Form polish */
+.modern-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.modern-form input {
+  padding: 8px;
+  border: 1px solid #dbe2ef;
+  border-radius: 6px;
+  font-size: 1rem;
+  flex: 1 1 150px;
+}
+
+/* Table polish */
+.modern-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+  background: transparent;
+}
+.modern-table th, .modern-table td {
+  padding: 12px 16px;
+  background: #232a34;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+.modern-table tr.selected td {
+  background: #2d8cf0;
+  color: #fff;
+}
+.modern-table tr:hover {
+  background: #eaf3ff;
+}
+
+.collision-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+  font-size: 1rem;
+}
+.collision-table th, .collision-table td {
+  border-bottom: 1px solid #e3e7fa;
+  padding: 8px 10px;
+  text-align: left;
+}
+.collision-table th {
+  background: var(--nasa-blue);
+  color: var(--nasa-white);
+}
+.collision-table tr:hover {
+  background: #e3e7fa;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.tle-cell {
+  font-size: 0.95em;
+  color: #6c7a89;
+  word-break: break-all;
+}
+
+.modern-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.modern-list-item {
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  align-items: center;
+}
+
+.modern-list-item .danger {
+  color: #ff4d4f;
+  margin-right: 8px;
+}
+
+.distance {
+  color: #2d8cf0;
+  font-weight: bold;
+  margin-left: 8px;
+}
+
+.modern-msg {
+  margin-top: 12px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.modern-msg.success {
+  background: #e8f8f5;
+  color: #19be6b;
+}
+
+.modern-msg.error {
+  background: #fff1f0;
+  color: #ff4d4f;
+}
+
+.modern-msg.info {
+  background: #f0f5ff;
+  color: #2d8cf0;
+}
+
+.modern-loader {
+  color: #2d8cf0;
+  font-weight: bold;
+  padding: 16px 0;
+}
+
+.modern-card.globe-card {
+  margin-top: 32px;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.modern-globe-container {
+  height: 500px;
+  min-height: 500px;
+  width: 100%;
+  border-radius: 0 0 16px 16px;
+  overflow: hidden;
+  position: relative;
+  background: #222;
+}
+
+/* Dark mode support */
+body.dark, .modern-app-container.dark {
+  background: #181c2a;
+  color: #e3e7fa;
+}
+body.dark .modern-card, .modern-app-container.dark .modern-card {
+  background: #1a237e;
+  color: #fff;
+  box-shadow: 0 2px 16px rgba(11,61,145,0.18);
+}
+body.dark .analytics-title {
+  color: #90caf9;
+}
+body.dark .analytics-badge {
+  background: #23294a;
+  color: #90caf9;
+}
+body.dark .analytics-badge.red {
+  background: #3d2323;
+  color: #ff8a80;
+}
+body.dark .analytics-badge.green {
+  background: #233d23;
+  color: #a5d6a7;
+}
+body.dark .analytics-badge.yellow {
+  background: #4a4323;
+  color: #ffe082;
+}
+body.dark .modern-btn {
+  background: #3949ab;
+  color: #fff;
+}
+body.dark .modern-btn:hover {
+  background: #1a237e;
+}
+body.dark .collision-table th {
+  background: #23294a;
+  color: #90caf9;
+}
+body.dark .collision-table tr:hover {
+  background: #23294a;
+}
+body.dark .add-satellite-panel input {
+  background: #23294a;
+  color: #e3e7fa;
+  border: 1px solid #3949ab;
+}
+body.dark .add-satellite-panel input:focus {
+  border: 1.5px solid #90caf9;
+}
+
+/* Modal styles */
+.modern-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modern-modal {
+  background: #232a34;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(44,62,80,0.28);
+  padding: 32px 40px;
+  color: #fff;
+  max-width: 420px;
+  margin: 80px auto;
+  animation: fadeIn 0.3s;
+}
+.modern-app-container.dark .modern-modal {
+  background: #232a36;
+  color: #e6e6e6;
+}
+
+/* Toast notification */
+.modern-toast {
+  position: fixed;
+  top: 32px;
+  right: 32px;
+  z-index: 2000;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 12px rgba(44,62,80,0.12);
+  animation: toast-pop 0.3s cubic-bezier(.4,2,.6,1) both;
+}
+.modern-toast.success {
+  background: #e8f8f5;
+  color: #19be6b;
+}
+.modern-toast.error {
+  background: #fff1f0;
+  color: #ff4d4f;
+}
+.modern-app-container.dark .modern-toast.success {
+  background: #1a2b22;
+  color: #1dbf73;
+}
+.modern-app-container.dark .modern-toast.error {
+  background: #2a1a1a;
+  color: #ff4d4f;
+}
+
+/* Animations */
+@keyframes toast-pop {
+  0% { opacity: 0; transform: translateY(-30px) scale(0.95);}
+  100% { opacity: 1; transform: translateY(0) scale(1);}
+}
+@keyframes modal-pop {
+  0% { opacity: 0; transform: scale(0.9);}
+  100% { opacity: 1; transform: scale(1);}
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(40px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+.animate-pop {
+  animation: toast-pop 0.4s cubic-bezier(.4,2,.6,1) both;
+}
+
+/* Animation: fade-in for cards and panels */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.fade-in-up {
+  animation: fadeInUp 0.7s cubic-bezier(.4,2,.6,1) both, bounceIn 0.8s cubic-bezier(.4,2,.6,1) 0.2s;
+}
+@keyframes bounceIn {
+  0% { transform: scale(0.97); }
+  60% { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+
+/* Responsive & mobile-friendly layout */
+@media (max-width: 1100px) {
+  .modern-main-grid {
+    padding: 18px 4vw 0 4vw;
+  }
+  .modern-header.nasa-app-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+@media (max-width: 900px) {
+  .modern-main-grid {
+    background: none;
+    padding: 8px 2vw 0 2vw;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .modern-card {
+    min-width: 0;
+    width: 100%;
+    padding: 14px 6px 10px 6px;
+  }
+  .modern-globe-container, .modern-card.globe-card {
+    height: 300px;
+    min-height: 300px;
+  }
+  .modern-main-grid > div {
+    flex-direction: column !important;
+    gap: 18px !important;
+  }
+}
+@media (max-width: 600px) {
+  .modern-header.nasa-app-bar {
+    padding: 10px 6px;
+  }
+  .modern-main-grid {
+    padding: 8px 2vw 0 2vw;
+  }
+  .nasa-title {
+    font-size: 1.2rem;
+  }
+}
+
+/* Branding: NASA-style logo and app bar */
+.nasa-app-bar {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: #232a34;
+  padding: 18px 32px;
+  border-radius: 0 0 18px 18px;
+  box-shadow: 0 2px 12px rgba(44,62,80,0.12);
+  margin-bottom: 18px;
+}
+.nasa-logo {
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px #0002;
+}
+.nasa-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-left: 18px;
+  letter-spacing: 1px;
+  color: #2d8cf0;
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  text-shadow: 0 2px 8px #0003;
+}
+
+/* Satellite legend styles */
+.sat-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 16px 0 0 0;
+  justify-content: center;
+}
+/* Legend polish */
+.sat-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.98em;
+  background: #e3eaf5;
+  color: #1a3a6b;
+  font-weight: 600;
+  border: 2px solid #e3eaf5;
+  border-radius: 6px;
+  padding: 4px 10px;
+  box-shadow: 0 1px 4px rgba(44,62,80,0.06);
+  transition: border 0.2s, background 0.2s;
+}
+.sat-legend-item:hover {
+  background: #d0e7ff;
+  border: 2px solid #2d8cf0;
+}
+.sat-legend-color {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1.5px solid #ccc;
+  display: inline-block;
+}
+
+/* Satellite info panel */
+/* Info panel polish */
+.sat-info-panel {
+  position: fixed;
+  top: 80px;
+  right: 32px;
+  background: #f8fbff;
+  color: #1a3a6b;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(44,62,80,0.12);
+  padding: 24px 20px 20px 20px;
+  min-width: 260px;
+  z-index: 3000;
+  animation: modal-pop 0.25s cubic-bezier(.4,2,.6,1) both;
+  border: 2px solid #e3eaf5;
+}
+.sat-info-panel h3 {
+  color: #0b1e3f;
+  font-weight: 700;
+  margin-top: 0;
+}
+.sat-info-panel .sat-legend-color {
+  margin-bottom: -4px;
+}
+.sat-info-panel .sat-info-close {
+  float: right;
+  background: none;
+  border: none;
+  font-size: 1.2em;
+  cursor: pointer;
+  color: #888;
+}
+
+/* Table row highlight */
+.modern-table tr.selected {
+  background: #d0e7ff;
+}
+
+/* Button hover effect */
+.modern-btn:hover {
+  filter: brightness(1.08);
+  box-shadow: 0 2px 8px rgba(44,62,80,0.10);
+}
+
+/* Tooltip */
+/* Tooltip polish */
+.sat-tooltip {
+  position: absolute;
+  background: #1a3a6b;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.95em;
+  z-index: 4000;
+  pointer-events: none;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.18);
+  font-weight: 500;
+  border: 1.5px solid #e3eaf5;
+}
+
+/* Loading spinner overlay for globe */
+/* Globe loading spinner polish */
+.globe-loading-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(11,30,63,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+.globe-spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #2d8cf0;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Playback panel NASA style */
+.nasa-playback-panel {
+  background: #0b1e3f;
+  color: #fff;
+  border: 2px solid #2d8cf0;
+  box-shadow: 0 4px 24px rgba(44,62,80,0.18);
+}
+.nasa-playback-panel input[type=range] {
+  accent-color: #2d8cf0;
+}
+.nasa-playback-panel select {
+  background: #e3eaf5;
+  color: #1a3a6b;
+  border-radius: 6px;
+  border: 1px solid #b3c6e0;
+  font-weight: 600;
+  padding: 2px 8px;
+}
+
+/* Interactive analytics panel */
+.analytics-panel {
+  background: var(--nasa-blue) !important;
+  color: var(--nasa-white) !important;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(11,61,145,0.10);
+  padding: 24px 32px;
+  margin: 32px auto;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.analytics-panel .analytics-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--nasa-white) !important;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+  text-shadow: none;
+}
+.analytics-panel .analytics-row {
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--nasa-white);
+}
+.analytics-panel .analytics-badge {
+  background: var(--nasa-light-blue);
+  color: var(--nasa-white);
+  border-radius: 8px;
+  padding: 4px 12px;
+  font-weight: 600;
+  margin-left: 8px;
+}
+.analytics-panel .analytics-badge.red {
+  background: var(--nasa-red);
+  color: var(--nasa-white);
+}
+.analytics-panel .analytics-badge.green {
+  background: #43a047;
+  color: var(--nasa-white);
+}
+.analytics-panel .analytics-badge.yellow {
+  background: #ffb300;
+  color: var(--nasa-dark);
+}
+
+/* Add Satellite Form */
+.add-satellite-panel {
+  background: var(--nasa-white) !important;
+  color: var(--nasa-dark) !important;
+}
+.add-satellite-panel form {
+  width: 100%;
+  gap: 12px;
+  margin-top: 8px;
+}
+.add-satellite-panel input {
+  border: 1.5px solid var(--nasa-blue);
+  background: #f4f7fa;
+  color: var(--nasa-dark);
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+  margin-bottom: 6px;
+}
+.add-satellite-panel input:focus {
+  border: 2px solid var(--nasa-red);
+  box-shadow: 0 0 8px #fc3d2133;
+}
+.add-btn {
+  background: var(--nasa-blue);
+  color: var(--nasa-white);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 26px;
+  font-size: 1.08rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(11,61,145,0.10);
+  transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+}
+.add-btn:hover {
+  background: var(--nasa-red);
+  color: var(--nasa-white);
+  box-shadow: 0 4px 16px rgba(252,61,33,0.18);
+  transform: scale(1.06);
+}
+.auth-error {
+  color: #c62828;
+  margin-left: 12px;
+  font-size: 0.98rem;
+}
+
+/* Scrollbar Styling */
+.modern-card, .collision-table, .add-satellite-panel form {
+  scrollbar-width: thin;
+  scrollbar-color: #ff6e7f #bfe9ff;
+}
+.modern-card::-webkit-scrollbar {
+  width: 8px;
+  background: #bfe9ff;
+}
+.modern-card::-webkit-scrollbar-thumb {
+  background: #ff6e7f;
+  border-radius: 8px;
+}
+
+/* Add a floating animated background shape for realism */
+.modern-app-container::before {
+  content: '';
+  position: fixed;
+  top: 10%;
+  left: 60%;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, #bfe9ff88 0%, #ff6e7f22 100%);
+  filter: blur(60px);
+  z-index: 0;
+  pointer-events: none;
+  animation: floatShape 8s ease-in-out infinite alternate;
+}
+@keyframes floatShape {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(40px) scale(1.08); }
+}
