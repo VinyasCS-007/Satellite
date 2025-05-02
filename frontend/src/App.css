@@ -203,6 +203,29 @@ body, .modern-app-container {
   transition: background 0.2s;
 }
 
+.enhanced-collision-table {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(252,61,33,0.08);
+  font-size: 1.04em;
+}
+.enhanced-collision-table th, .enhanced-collision-table td {
+  padding: 8px 14px;
+  text-align: center;
+}
+.enhanced-collision-table th {
+  background: #ffeaea;
+  color: #b71c1c;
+  font-weight: 700;
+  border-bottom: 2px solid #fc3d21;
+}
+.enhanced-collision-table tr {
+  transition: background 0.18s;
+}
+.enhanced-collision-table tr:hover {
+  background: #fff0f0;
+}
+
 .tle-cell {
   font-size: 0.95em;
   color: #6c7a89;
@@ -353,6 +376,45 @@ body.dark .add-satellite-panel input:focus {
 .modern-app-container.dark .modern-modal {
   background: #232a36;
   color: #e6e6e6;
+}
+
+.enhanced-modal-fade-in {
+  animation: enhancedFadeIn 0.35s cubic-bezier(.4,2,.6,1) both;
+}
+@keyframes enhancedFadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.enhanced-modal {
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(252,61,33,0.18), 0 2px 8px rgba(44,62,80,0.10);
+  background: linear-gradient(135deg, #fff 80%, #ffeaea 100%);
+  border: 2.5px solid #fc3d21;
+  padding: 32px 32px 18px 32px;
+  min-width: 380px;
+  max-width: 600px;
+  transition: box-shadow 0.2s, border 0.2s;
+}
+
+.enhanced-modal .modern-btn {
+  min-width: 90px;
+  font-size: 1.08em;
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(252,61,33,0.10);
+  transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+}
+.enhanced-modal .modern-btn:focus {
+  outline: 2px solid #fc3d21;
+}
+
+.enhanced-modal .modal-tip {
+  color: #888;
+  font-size: 0.98em;
+  margin-bottom: 8px;
+  text-align: left;
+  padding-left: 2px;
 }
 
 /* Toast notification */

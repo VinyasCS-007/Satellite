@@ -22,9 +22,18 @@ function tleToCartesian3(tle1, tle2, time = new Date()) {
   }
 }
 
-function SatelliteViewer({ satellites = [], selectedSatId }) {
+function SatelliteViewer({ satellites = [], collisions = [], selectedSatId }) {
   const viewerRef = useRef();
   const [positions, setPositions] = useState([]);
+
+  // Build a set of colliding satellite names for quick lookup
+  const collidingNames = new Set();
+  if (collisions && collisions.length > 0) {
+    collisions.forEach(col => {
+      if (col.satellite1) collidingNames.add(col.satellite1);
+      if (col.satellite2) collidingNames.add(col.satellite2);
+    });
+  }
 
   // Only update positions every 1 second to avoid flicker
   useEffect(() => {
@@ -100,18 +109,18 @@ function SatelliteViewer({ satellites = [], selectedSatId }) {
             key={sat.id}
             name={sat.name}
             position={sat.cartesian}
-            description={`<b>Name:</b> ${sat.name}<br/><b>NORAD ID:</b> ${sat.norad_id}`}
+            description={`<b>Name:</b> ${sat.name}<br/><b>NORAD ID:</b> ${sat.norad_id}<br/><b>Color:</b> ${sat.color || 'N/A'}<br/><b>TLE Line 1:</b> ${sat.tle_line1}<br/><b>TLE Line 2:</b> ${sat.tle_line2}${sat.altitude ? `<br/><b>Altitude:</b> ${sat.altitude} km` : ''}${sat.speed ? `<br/><b>Speed:</b> ${sat.speed} m/s` : ''}`}
           >
             <PointGraphics
               pixelSize={sat.id === selectedSatId ? 16 : 10}
-              color={Color.YELLOW}
+              color={collidingNames.has(sat.name) ? Color.RED : Color.YELLOW}
               outlineColor={Color.WHITE}
               outlineWidth={sat.id === selectedSatId ? 6 : 0}
               show
             />
             <LabelGraphics
               text={`${sat.name} (NORAD: ${sat.norad_id})`}
-              fillColor={Color.YELLOW}
+              fillColor={collidingNames.has(sat.name) ? Color.RED : Color.YELLOW}
             />
           </Entity>
         ))}
